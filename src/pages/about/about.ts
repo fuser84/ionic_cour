@@ -35,3 +35,12 @@ export class AboutPage implements OnInit {
   }
 
 }
+
+
+
+
+
+
+
+
+
