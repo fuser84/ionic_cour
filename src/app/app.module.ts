@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { MenuPage } from '../pages/menu/menu';
 import { ContactPage } from '../pages/contact/contact';
 import { AboutPage } from '../pages/about/about';
+import { DishdetailPage } from '../pages/dishdetail/dishdetail';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,6 +19,7 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import { baseURL} from '../shared/baseurl';
 import {HttpModule} from "@angular/http";
+import {DishdetailPageModule} from "../pages/dishdetail/dishdetail.module";
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {HttpModule} from "@angular/http";
     HomePage,
     AboutPage,
     MenuPage,
-    ContactPage
+    ContactPage,
+    DishdetailPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {HttpModule} from "@angular/http";
     HomePage,
     AboutPage,
     MenuPage,
-    ContactPage
+    ContactPage,
+    DishdetailPage
   ],
   providers: [
     StatusBar,
