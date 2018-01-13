@@ -20,6 +20,7 @@ import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-htt
 import { baseURL} from '../shared/baseurl';
 import {HttpModule} from "@angular/http";
 import {DishdetailPageModule} from "../pages/dishdetail/dishdetail.module";
+import { FavoriteProvider } from '../providers/favorite/favorite';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {DishdetailPageModule} from "../pages/dishdetail/dishdetail.module";
     LeaderProvider,
     PromotionProvider,
     ProcessHttpmsgProvider,
-    { provide: 'BaseURL', useValue: baseURL }
+    { provide: 'BaseURL', useValue: baseURL },
+    FavoriteProvider
   ]
 })
 export class AppModule {}
