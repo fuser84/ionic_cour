@@ -41,7 +41,7 @@ export class FavoritesPage implements OnInit {
     this.favoriteservice.deleteFavorite(id)
       .subscribe(favorites => this.favorites = favorites,
         errmess => this.errMess = errmess);
-    item.close();//hide options buttons
+    item.close();//hide options buttons otherwise it will not close after swipe
   }
 
 
