@@ -1,10 +1,9 @@
-import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController,  ActionSheetController} from 'ionic-angular';
-import { Dish} from '../../shared/dish';
-import { Comment} from '../../shared/comment';
-import { FavoriteProvider } from '../../providers/favorite/favorite';
+import {Component, Inject} from '@angular/core';
+import {IonicPage, NavController, NavParams, ToastController, ActionSheetController} from 'ionic-angular';
+import {Dish} from '../../shared/dish';
+import {FavoriteProvider} from '../../providers/favorite/favorite';
 import {ModalController} from 'ionic-angular';
-import { CommentPage } from '../comment/comment';
+import {CommentPage} from '../comment/comment';
 
 /**
  * Generated class for the DishdetailPage page.
@@ -41,15 +40,15 @@ export class DishdetailPage {
 
     this.numcomments = this.dish.comments.length;
     let total = 0;
-    this.dish.comments.forEach(comment => total+=comment.rating);
-    this.avgstars = (total/this.numcomments).toFixed(2);
+    this.dish.comments.forEach(comment => total += comment.rating);
+    this.avgstars = (total / this.numcomments).toFixed(2);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DishdetailPage');
   }
 
-  addToFavorites(){
+  addToFavorites() {
     console.log('Adding to Favorites', this.dish.id);
     this.favorite = this.favoriteservice.addFavorite(this.dish.id);
     this.toastCtrl.create({
@@ -59,7 +58,7 @@ export class DishdetailPage {
     }).present();
   }
 
-  showAction(){
+  showAction() {
     let actionsheet = this.actionCtrl.create({
       title: 'Select Actions',
       buttons: [
@@ -90,8 +89,12 @@ export class DishdetailPage {
 
   }
 
-  openComment(){
+  openComment() {
     let modal = this.modalCtrl.create(CommentPage);
+    modal.onDidDismiss(data => {
+      //console.log(data); //debug
+     this.dish.comments.push(data);
+    });
     modal.present();
   }
 

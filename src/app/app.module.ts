@@ -22,7 +22,6 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import { baseURL} from '../shared/baseurl';
 import {HttpModule} from "@angular/http";
-import {DishdetailPageModule} from "../pages/dishdetail/dishdetail.module";
 import { FavoriteProvider } from '../providers/favorite/favorite';
 
 

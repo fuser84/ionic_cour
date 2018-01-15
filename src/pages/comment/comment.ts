@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup} from '@angular/forms';
-import { Dish } from '../../shared/dish';
 
 /**
  * Generated class for the CommentPage page.
@@ -27,7 +26,7 @@ export class CommentPage {
       author: ['', Validators.required],
       rating: 5,
       comment: ['', Validators.required],
-      // dateTime: ['', Validators.required]
+      date: ''
     });
   }
 
@@ -40,9 +39,11 @@ export class CommentPage {
   }
 
   onSubmit(){
-
-    console.log(this.comments.value);
-    this.viewCtrl.dismiss();
+    //property date should be the same as if it is taken from db.json because in template we have "date" property
+    this.comments.value.date = new Date().toISOString();
+    //console.log(this.comments.value); //debug
+    let data = this.comments.value;
+    this.viewCtrl.dismiss(data);
   }
 
 }

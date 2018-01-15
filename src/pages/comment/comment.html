@@ -33,7 +33,8 @@
     </ion-range>
   </ion-item>
   <ion-item>
-    <ion-textarea placeholder="Your Comment" rows="12" formControlName="comment"></ion-textarea>
+    <ion-label floating>Your Comment</ion-label>
+    <ion-textarea rows="12" formControlName="comment"></ion-textarea>
   </ion-item>
   <button ion-button type="submit" [disabled]="!comments.valid">Submit</button>
 </form>
