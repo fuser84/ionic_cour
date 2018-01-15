@@ -9,6 +9,7 @@ import { MenuPage } from '../pages/menu/menu';
 import { ContactPage } from '../pages/contact/contact';
 import {FavoritesPage } from '../pages/favorites/favorites';
 import { ReservationPage } from '../pages/reservation/reservation';
+import {CommentPage} from "../pages/comment/comment";
 
 
 @Component({
@@ -21,7 +22,8 @@ export class MyApp {
 
   pages: Array<{title: string, icon: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+  constructor(public platform: Platform, public statusBar: StatusBar,
+              public splashScreen: SplashScreen,
               public modalCtrl: ModalController) {
     this.initializeApp();
 
@@ -55,5 +57,6 @@ export class MyApp {
     let modal = this.modalCtrl.create(ReservationPage);
     modal.present();
   }
+
 
 }

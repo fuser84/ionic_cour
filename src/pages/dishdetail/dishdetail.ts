@@ -1,8 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController,  ActionSheetController} from 'ionic-angular';
 import { Dish} from '../../shared/dish';
 import { Comment} from '../../shared/comment';
 import { FavoriteProvider } from '../../providers/favorite/favorite';
+import {ModalController} from 'ionic-angular';
+import { CommentPage } from '../comment/comment';
 
 /**
  * Generated class for the DishdetailPage page.
@@ -28,7 +30,9 @@ export class DishdetailPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               @Inject('BaseURL') private BaseURL,
               private favoriteservice: FavoriteProvider,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private actionCtrl: ActionSheetController,
+              public modalCtrl: ModalController) {
     // get info from the menu component
     this.dish = this.navParams.get('dish');
 
@@ -53,6 +57,42 @@ export class DishdetailPage {
       position: 'middle',
       duration: 3000
     }).present();
+  }
+
+  showAction(){
+    let actionsheet = this.actionCtrl.create({
+      title: 'Select Actions',
+      buttons: [
+        {
+          text: 'Add to Favorites',
+          handler: () => {
+            console.log(this);//debug ==> DishDetailPage as an object
+            this.addToFavorites();
+            console.log('Added to the favorites');
+          }
+        },
+        {
+          text: 'Add Comment',
+          handler: () => {
+            this.openComment();
+            console.log('Comment modal is opened');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    }).present();
+
+  }
+
+  openComment(){
+    let modal = this.modalCtrl.create(CommentPage);
+    modal.present();
   }
 
 }
