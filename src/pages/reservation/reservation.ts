@@ -33,6 +33,7 @@ export class ReservationPage {
   }
 
   dismiss(){
+    //debugger;
     this.viewCtrl.dismiss();
   }
 

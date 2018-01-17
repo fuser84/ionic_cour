@@ -35,6 +35,7 @@ export class CommentPage {
   }
 
   dismiss(){
+    //debugger;
     this.viewCtrl.dismiss();
   }
 

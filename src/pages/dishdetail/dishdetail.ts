@@ -92,8 +92,11 @@ export class DishdetailPage {
   openComment() {
     let modal = this.modalCtrl.create(CommentPage);
     modal.onDidDismiss(data => {
+      if (data === undefined){
+        return "";
+      }
       //console.log(data); //debug
-     this.dish.comments.push(data);
+        this.dish.comments.push(data);
     });
     modal.present();
   }
