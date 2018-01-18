@@ -31,12 +31,17 @@ export class DishdetailPage {
               private favoriteservice: FavoriteProvider,
               private toastCtrl: ToastController,
               private actionCtrl: ActionSheetController,
-              public modalCtrl: ModalController) {
+              public modalCtrl: ModalController,
+              ) {
+
+
+
     // get info from the menu component
     this.dish = this.navParams.get('dish');
 
     //check of the favorites
     this.favorite = this.favoriteservice.isFavorite(this.dish.id);
+    console.log(this.favorite);//debug
 
     this.numcomments = this.dish.comments.length;
     let total = 0;
