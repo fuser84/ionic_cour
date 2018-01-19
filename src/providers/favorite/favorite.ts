@@ -22,6 +22,7 @@ export class FavoriteProvider {
     console.log('Hello FavoriteProvider Provider');
     this.favorites = [];
     this.storageInitiation();
+    console.log(this);
   }
 
 
@@ -67,3 +68,8 @@ export class FavoriteProvider {
   }
 
 }
+
+
+
+
+

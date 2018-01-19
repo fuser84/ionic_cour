@@ -38,6 +38,7 @@ export class MyApp {
   }
 
   initializeApp() {
+    //platform is the service that let you obtain info from the current device!!!
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
