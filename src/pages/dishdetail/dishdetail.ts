@@ -4,6 +4,7 @@ import {Dish} from '../../shared/dish';
 import {FavoriteProvider} from '../../providers/favorite/favorite';
 import {ModalController} from 'ionic-angular';
 import {CommentPage} from '../comment/comment';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the DishdetailPage page.
@@ -32,6 +33,7 @@ export class DishdetailPage {
               private toastCtrl: ToastController,
               private actionCtrl: ActionSheetController,
               public modalCtrl: ModalController,
+              private socialSharing: SocialSharing
               ) {
 
 
@@ -80,6 +82,26 @@ export class DishdetailPage {
           handler: () => {
             this.openComment();
             console.log('Comment modal is opened');
+          }
+        },
+        {
+          text: `Share via Facebook`,
+          handler: () => {
+            this.socialSharing.shareViaFacebook(
+              this.dish.name +  ' -- ' + this.dish.description,
+              this.BaseURL + this.dish.image, '')
+              .then(() => console.log('Posted successfully to facebook'))
+            .catch(() => console.log('Failed to post to facebook'));
+          }
+        },
+        {
+          text: `Share via WhatsApp`,
+          handler: () => {
+            this.socialSharing.shareViaWhatsApp(
+              this.dish.name +  ' -- ' + this.dish.description,
+              this.BaseURL + this.dish.image, '')
+              .then(() => console.log('Posted successfully to WhatsApp'))
+              .catch(() => console.log('Failed to post to WhatsApp'));
           }
         },
         {
