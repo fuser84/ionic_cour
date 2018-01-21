@@ -60,6 +60,24 @@ export class RegisterPage {
         err => console.log('Error obtaining picture'))
   }
 
+  getPhoto(){
+    const options: CameraOptions = {
+      quality: 100,
+      targetHeight: 100,
+      targetWidth: 100,
+      correctOrientation: true,
+      allowEdit: true,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      // in my case photos on android are saves in *.jpg format
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.ALLMEDIA,
+      sourceType: 0
+    };
+    this.camera.getPicture(options)
+      .then(imageData => this.image = imageData,
+        err => console.log('Error obtaining picture'))
+  }
+
   onSubmit() {
     console.log(this.registerForm.value);
     this.dismiss();
